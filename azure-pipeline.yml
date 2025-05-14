@@ -15,8 +15,9 @@ steps:
     npm install
   displayName: 'Install dependencies'
 
-- script: npm run build-prod
-  displayName: 'Build Angular app'
+- script: npm run build -- --configuration=production
+  displayName: 'Build Angular app (production)'
+
 
 # Archive les fichiers de build Angular
 - task: ArchiveFiles@2

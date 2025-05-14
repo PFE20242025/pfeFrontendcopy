@@ -80,12 +80,6 @@ steps:
     cat angular.json | grep -A 10 \"outputPath\"
   displayName: 'Debug directory structure'
 
-- script: |
-    npm run build -- --configuration=production
-    echo "Build output directories:"
-    ls -la dist
-  displayName: 'Build Angular app (production)'
-
 # Modified to be more flexible with the output path
 - task: ArchiveFiles@2
   inputs:

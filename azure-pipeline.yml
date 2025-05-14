@@ -23,7 +23,7 @@ steps:
 # Archive les fichiers de build Angular
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: 'dist/pfe-frontend/browser'
+    rootFolderOrFile: 'dist/pfe-frontend'
     includeRootFolder: false
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/app.zip'

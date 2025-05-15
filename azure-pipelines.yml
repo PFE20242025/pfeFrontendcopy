@@ -1,0 +1,20 @@
+trigger:
+- main  # Trigger the pipeline when code is pushed to the main branch
+
+pool:
+  vmImage: 'ubuntu-latest'  # Use the latest Ubuntu agent
+
+variables:
+  buildConfiguration: 'prod'  # Environment-specific config (optional)
+
+steps:
+- script: |
+    npm install
+    npm run build-prod
+  displayName: 'Build Angular App'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: '$(Build.SourcesDirectory)/dist'
+    artifactName: 'angular-app'
+  displayName: 'Publish Build Artifacts'

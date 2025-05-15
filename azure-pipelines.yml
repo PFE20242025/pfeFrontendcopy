@@ -22,7 +22,7 @@ steps:
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/app.zip'
     replaceExistingArchive: true
-  displayName: 'Archive Entire dist folder including server files'
+  displayName: 'Archive entire dist folder including server files'
 
 - task: PublishBuildArtifacts@1
   inputs:

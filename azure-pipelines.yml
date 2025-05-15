@@ -1,19 +1,33 @@
 trigger:
-- main  # Trigger the pipeline when code is pushed to the main branch
+- main
 
 pool:
-  name: Default  # Use the latest Ubuntu agent
-
-variables:
-  buildConfiguration: 'prod'  # Environment-specific config (optional)
+  name: Default
 
 steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '20.13.1'
+  displayName: 'Install Node.js'
+
 - script: |
+    npm install --save-dev @angular-devkit/build-angular
+    npm install -g @angular/cli
     npm install
-    npm run build-prod
+  displayName: 'Install angular dependencies'
+
+- script: |
+    echo Workspace directory contents:
+    dir
+    echo Angular.json configuration:
+    findstr /C:"outputPath" angular.json
+  displayName: 'Debug directory structure'
+
+- script: |
+    npm run build -- --configuration=production
     echo Build output directories:
     dir dist
-  displayName: 'Build Angular App'
+  displayName: 'Build Angular app (production)'
 
 - task: ArchiveFiles@2
   inputs:
@@ -22,7 +36,7 @@ steps:
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/app.zip'
     replaceExistingArchive: true
-  displayName: 'Archive entire dist folder including server files'
+  displayName: 'Archive Entire dist folder including server files'
 
 - task: PublishBuildArtifacts@1
   inputs:

@@ -6,7 +6,7 @@ steps:
 - task: NodeTool@0
   inputs:
     versionSpec: '20.13.1'
-  displayName: 'Install Node.js'
+  displayName: 'Install node.js'
 
 - script: |
     npm install --save-dev @angular-devkit/build-angular

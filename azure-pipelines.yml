@@ -2,7 +2,7 @@ trigger:
 - main  # Trigger the pipeline when code is pushed to the main branch
 
 pool:
-  vmImage: 'ubuntu-latest'  # Use the latest Ubuntu agent
+  name: Default  # Use the latest Ubuntu agent
 
 variables:
   buildConfiguration: 'prod'  # Environment-specific config (optional)

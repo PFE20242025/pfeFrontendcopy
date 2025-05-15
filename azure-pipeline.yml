@@ -1,7 +1,9 @@
 trigger:
 - main
+
 pool:
   name: Default
+
 steps:
 - task: NodeTool@0
   inputs:
@@ -14,7 +16,6 @@ steps:
     npm install
   displayName: 'Install angular dependencies'
 
-# First, let's check what directories exist to debug the issue
 - script: |
     echo Workspace directory contents:
     dir
@@ -28,7 +29,6 @@ steps:
     dir dist
   displayName: 'Build Angular app (production)'
 
-# Modified to be more flexible with the output path
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: 'dist/pfefrontend'
@@ -38,11 +38,10 @@ steps:
     replaceExistingArchive: true
   displayName: 'Archive Angular build output'
 
-- task: AzureRmWebAppDeployment@5
+### ✅ NEW STEP: Publish artifact for Release pipeline
+- task: PublishBuildArtifacts@1
   inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Azure subscription 1(1)(cdac076e-a055-45d3-9bb6-dc1e0a6536e0)'
-    appType: 'webAppLinux'
-    WebAppName: 'pfe-frontend-app'
-    packageForLinux: '$(Build.ArtifactStagingDirectory)/app.zip'
-    DeploymentTypeLinux: 'oneDeploy'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+  displayName: 'Publish Artifact to be used in Release pipeline'

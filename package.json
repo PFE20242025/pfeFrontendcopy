@@ -7,8 +7,7 @@
   "build": "ng build --configuration=production",
   "watch": "ng build --watch --configuration development",
   "test": "ng test",
-  "build-prod":"ng build --configuration=prod --output-hashing=all"
-},
+  "build-prod": "ng build --configuration=production"},
   "private": true,
   "dependencies": {
     "@angular/animations": "^18.2.0",

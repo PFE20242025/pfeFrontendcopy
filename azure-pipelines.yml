@@ -3,7 +3,8 @@ trigger:
 
 pool:
   name: Default
-  
+
+steps:  
 - task: NodeTool@0
   inputs:
     versionSpec: '20.13.1'

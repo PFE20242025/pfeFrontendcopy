@@ -1,3 +1,9 @@
+trigger:
+  - main
+
+pool:
+  name: Default
+  
 - task: NodeTool@0
   inputs:
     versionSpec: '20.13.1'

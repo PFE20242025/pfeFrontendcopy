@@ -1,46 +1,21 @@
-trigger:
-- main
-
-pool:
-  name: Default
-
-steps:
 - task: NodeTool@0
   inputs:
     versionSpec: '20.13.1'
   displayName: 'Install node.js'
 
 - script: |
-    npm install --save-dev @angular-devkit/build-angular
     npm install -g @angular/cli
     npm install
-  displayName: 'Install angular dependencies'
-
-- script: |
-    echo Workspace directory contents:
-    dir
-    echo Angular.json configuration:
-    findstr /C:"outputPath" angular.json
-  displayName: 'Debug directory structure'
+  displayName: 'Install Angular dependencies'
 
 - script: |
     npm run build -- --configuration=production
-    echo Build output directories:
-    dir dist
-  displayName: 'Build Angular app (production)'
+  displayName: 'Build Angular app'
 
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: 'dist'
-    includeRootFolder: false
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/app.zip'
-    replaceExistingArchive: true
-  displayName: 'Archive Entire dist folder including server files'
-
+# ✅ Publish dist/pfefrontend folder (NOT a ZIP)
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/app.zip'
+    PathtoPublish: 'dist/pfefrontend'
     ArtifactName: 'drop'
     publishLocation: 'Container'
-  displayName: 'Publish Artifact to be used in Release pipeline'
+  displayName: 'Publish dist folder'

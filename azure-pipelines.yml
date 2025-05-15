@@ -11,8 +11,7 @@ steps:
 - script: |
     npm install
     npm run build-prod
-    echo Workspace directory contents:
-    dir
+    echo Build output directories:
     dir dist
   displayName: 'Build Angular App'
 

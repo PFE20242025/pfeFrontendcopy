@@ -9,8 +9,8 @@ steps:
   displayName: 'Install node.js'
 
 - script: |
-    npm install -g @angular/cli@18
-    npm install --save-dev @angular-devkit/build-angular@18
+    npm install -g @angular/cli
+    npm install --save-dev @angular-devkit/build-angular
     npm install
   displayName: 'Install Angular 18 dependencies'
 

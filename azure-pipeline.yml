@@ -34,10 +34,11 @@ steps:
     npm install express
   displayName: 'Install Express.js'
 
-# Copier server.js et package.json à la racine
+# Copier server.js, package.json et web.config à la racine
 - script: |
     copy server.js dist\
     copy package.json dist\
+    copy web.config dist\
   displayName: 'Copy server files'
 
 - task: ArchiveFiles@2

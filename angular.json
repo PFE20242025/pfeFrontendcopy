@@ -26,7 +26,11 @@
                 "glob": "**/*",
                 "input": "public"
               },
-              "web.config"
+              {
+                  "glob": "web.config",          // ✅ This line
+                  "input": "src",                // ✅ Must start with sourceRoot ("src")
+                  "output": "."                  // ✅ Copy to dist root
+              }
             ],
             "styles": [
               "src/styles.css",
@@ -106,7 +110,11 @@
                 "glob": "**/*",
                 "input": "public"
               },
-              "web.config"
+              {
+                "glob": "web.config",          // ✅ This line
+                "input": "src",                // ✅ Must start with sourceRoot ("src")
+                "output": "."                  // ✅ Copy to dist root
+              }
             ],
             "styles": [
 

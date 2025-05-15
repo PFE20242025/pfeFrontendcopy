@@ -9,10 +9,10 @@ steps:
   displayName: 'Install node.js'
 
 - script: |
-    npm install --save-dev @angular-devkit/build-angular
-    npm install -g @angular/cli
+    npm install -g @angular/cli@18
+    npm install --save-dev @angular-devkit/build-angular@18
     npm install
-  displayName: 'Install dependencies'
+  displayName: 'Install Angular 18 dependencies'
 
 # First, let's check what directories exist to debug the issue
 - script: |

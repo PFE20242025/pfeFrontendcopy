@@ -41,7 +41,7 @@ steps:
 ### ✅ NEW STEP: Publish artifact for Release pipeline
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/app.zip'
     ArtifactName: 'drop'
     publishLocation: 'Container'
   displayName: 'Publish Artifact to be used in Release pipeline'

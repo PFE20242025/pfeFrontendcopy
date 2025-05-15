@@ -12,7 +12,7 @@ steps:
     npm install --save-dev @angular-devkit/build-angular
     npm install -g @angular/cli
     npm install
-  displayName: 'Install dependencies'
+  displayName: 'Install angular dependencies'
 
 # First, let's check what directories exist to debug the issue
 - script: |

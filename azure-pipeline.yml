@@ -9,10 +9,10 @@ steps:
   displayName: 'Install node.js'
 
 - script: |
-    npm install -g @angular/cli
     npm install --save-dev @angular-devkit/build-angular
+    npm install -g @angular/cli
     npm install
-  displayName: 'Install Angular 18 dependencies'
+  displayName: 'Install dependencies'
 
 # First, let's check what directories exist to debug the issue
 - script: |
@@ -38,10 +38,11 @@ steps:
     replaceExistingArchive: true
   displayName: 'Archive Angular build output'
 
-# Déploiement vers Azure App Service
-- task: AzureWebApp@1
+- task: AzureRmWebAppDeployment@5
   inputs:
-    azureSubscription: 'azure-connection-pfe'
-    appName: 'pfe-frontend-app'
-    package: '$(Build.ArtifactStagingDirectory)/app.zip'
-  displayName: 'Deploy Angular app to Azure Web App'
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1(1)(cdac076e-a055-45d3-9bb6-dc1e0a6536e0)'
+    appType: 'webAppLinux'
+    WebAppName: 'pfe-frontend-app'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    DeploymentTypeLinux: 'oneDeploy'

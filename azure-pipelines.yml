@@ -11,6 +11,7 @@ steps:
 - script: |
     npm install
     npm run build-prod
+    dir dist
   displayName: 'Build Angular App'
 
 - task: ArchiveFiles@2

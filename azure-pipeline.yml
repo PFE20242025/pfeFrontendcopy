@@ -44,5 +44,5 @@ steps:
     azureSubscription: 'Azure subscription 1(1)(cdac076e-a055-45d3-9bb6-dc1e0a6536e0)'
     appType: 'webAppLinux'
     WebAppName: 'pfe-frontend-app'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/*.zip'
+    packageForLinux: '$(Build.ArtifactStagingDirectory)/app.zip'
     DeploymentTypeLinux: 'oneDeploy'

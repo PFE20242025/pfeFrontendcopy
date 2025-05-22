@@ -14,7 +14,7 @@ steps:
       npm install --save-dev @angular-devkit/build-angular
       npm install -g @angular/cli
       npm install
-    displayName: 'Install Angular dependencies'
+    displayName: 'install Angular dependencies'
 
   - script: |
       echo Workspace directory contents:

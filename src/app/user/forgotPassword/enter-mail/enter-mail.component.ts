@@ -32,12 +32,11 @@ hasDisplayableError(controlName: string): boolean {
 }
 
   onSubmit() {
-    console.log({...this.form.value,clienturi: 'https://pfe-frontend-app-hgdbhpg3f6c3hqg0.canadacentral-01.azurewebsites.net/resetPassword'});
     this.isSubmitted = true;
     
     if (this.form.valid) {
         this.service.forgotPassword({...this.form.value,
-          clienturi: 'http://localhost:4200/resetPassword'}).subscribe({
+          clienturi: 'https://pfe-frontend-app-hgdbhpg3f6c3hqg0.canadacentral-01.azurewebsites.net/resetPassword'}).subscribe({
             next: (res: any) => {
               this.toastr.success('check your email', 'email send');
             },

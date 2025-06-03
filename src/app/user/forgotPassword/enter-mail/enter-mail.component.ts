@@ -38,7 +38,7 @@ hasDisplayableError(controlName: string): boolean {
         this.service.forgotPassword({...this.form.value,
           clienturi: 'https://pfe-frontend-app-hgdbhpg3f6c3hqg0.canadacentral-01.azurewebsites.net/resetPassword'}).subscribe({
             next: (res: any) => {
-              this.toastr.success('check your email', 'email send');
+              this.toastr.success('check your email', 'email sent');
             },
             error: (err) => {
                 if (err.status == 400) {
